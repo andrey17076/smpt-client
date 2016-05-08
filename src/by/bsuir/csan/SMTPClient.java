@@ -1,5 +1,6 @@
 package by.bsuir.csan;
 
+import java.io.IOException;
 
 public class SMTPClient {
 
@@ -11,8 +12,10 @@ public class SMTPClient {
             System.out.println("Sending e-mail...");
             smtp.sendMessage();
             System.out.println("E-mail sent");
-        } finally {
+        } catch (IOException e) {
             smtp.close();
+            System.out.println("Can't send e-mail!");
+            e.printStackTrace();
         }
     }
 }
